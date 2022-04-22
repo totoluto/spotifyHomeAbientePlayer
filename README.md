@@ -1,4 +1,4 @@
-# spotifyHomeAbientePlayer
+# spotifyHomeAmbientePlayer
 
 This is a little script i made which resumes music if not already playing. You need to make an Spotify project and add an `REDIRECT_URI` to it (it can be anything). Then you need to copy the `CLIENT_ID`, `CLIENT_SECRET` and the `REDIRECT_URI` you just set. Paste it into the `credentials.py`. Then you need to get your Device id.
 
