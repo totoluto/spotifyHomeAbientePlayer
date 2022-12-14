@@ -1,6 +1,3 @@
-from multiprocessing.connection import wait
-from pprint import pprint
-import sched
 import time
 import urllib
 import spotipy
@@ -24,23 +21,17 @@ def internet_on():
         return False
 
 # main loop
-s = sched.scheduler(time.time, time.sleep)
-
-def listener(sc):
-    if internet_on() != True:
-        pprint("No connection")
-        sc.enter(300, 1, listener, (sc,))
+while True:
+    if not internet_on():
+        print("No connection")
     else:
-        playing = sp.current_user_playing_track()
-        if playing is None:
-            sp.start_playback(device_id=DEVICE_ID)
-            pprint("Started to play")
-            sc.enter(300, 1, listener, (sc,))
-        elif playing.get('is_playing') == False and playing != None:
-            sp.start_playback(device_id=DEVICE_ID)
-            pprint("Started to play")
-            sc.enter(300, 1, listener, (sc,))
+        now = time.localtime()
+        playing = spfy.current_user_playing_track()
+        if playing is None or (playing.get('is_playing') == False and playing != None):
+            spfy.start_playback(device_id=DEVICE_ID, context_uri=PLY_URI)
+            print("Started to play")
+        if start_time <= now <= end_time:
+            spfy.volume(100, device_id=DEVICE_ID)
         else:
-            sc.enter(300, 1, listener, (sc,))
-s.enter(1, 1, listener, (s,))
-s.run()
+            spfy.volume(0, device_id=DEVICE_ID)
+    time.sleep(300)
