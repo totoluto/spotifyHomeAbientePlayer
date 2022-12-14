@@ -9,6 +9,7 @@ SPOTIPY_CLIENT_SECRET = credetials.SPOTIPY_CLIENT_SECRET
 SPOTIPY_REDIRECT_URI = credetials.SPOTIPY_REDIRECT_URI
 SCOPE = credetials.SCOPE
 DEVICE_ID = credetials.DEVICE_ID
+PLY_URI = credetials.PLY_URI
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
                      client_secret=SPOTIPY_CLIENT_SECRET, redirect_uri=SPOTIPY_REDIRECT_URI, scope=SCOPE))
