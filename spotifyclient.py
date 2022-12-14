@@ -4,6 +4,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import credetials
 
+#Configs
 SPOTIPY_CLIENT_ID = credetials.SPOTIPY_CLIENT_ID
 SPOTIPY_CLIENT_SECRET = credetials.SPOTIPY_CLIENT_SECRET
 SPOTIPY_REDIRECT_URI = credetials.SPOTIPY_REDIRECT_URI
@@ -11,7 +12,8 @@ SCOPE = credetials.SCOPE
 DEVICE_ID = credetials.DEVICE_ID
 PLY_URI = credetials.PLY_URI
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
+#Spotify definition of authentication
+spfy = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
                      client_secret=SPOTIPY_CLIENT_SECRET, redirect_uri=SPOTIPY_REDIRECT_URI, scope=SCOPE))
 
 def internet_on():
@@ -20,6 +22,12 @@ def internet_on():
         return True
     except:
         return False
+
+start_time = '09:00:00'
+end_time = '20:00:00'
+start_time = time.strptime(start_time, '%H:%M:%S')
+end_time = time.strptime(end_time, '%H:%M:%S')
+
 
 # main loop
 while True:
